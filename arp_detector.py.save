@@ -35,15 +35,7 @@ def mtd_shield_activate():
     print(f"[*] {IFACE} arayüzü yeniden ayağa kaldırılıyor (ifconfig up)...")
     subprocess.call(["ifconfig", IFACE, "up"])
     
-    print("[*] Eski IP düşürülüyor ve yeni MAC için IP talep ediliyor (DHCP)...")
-    # Önce askıda kalan DHCP kaydını temizle
-    subprocess.call(["dhclient", "-r", IFACE])
-    # Ağ yöneticisini yeniden başlatarak yeni MAC ile ağa bağlanmaya zorla
-    subprocess.call(["systemctl", "restart", "NetworkManager"])
-    # 3 saniye internetin oturmasını bekle
-    time.sleep(3)
-    
-    print("[+] Başarılı! Saldırganın hedefi boşa düşürüldü ve ağ bağlantısı yenilendi.\n")
+    print("[+] Başarılı! Saldırganın hedefi boşa düşürüldü.\n")
 
 def process_packet(packet):
     global UNDER_ATTACK
@@ -64,7 +56,8 @@ def process_packet(packet):
                 mtd_shield_activate()
                 
                 print("[*] Yeni saldırılar için dinlemeye devam ediliyor (3 saniye mola)...")
-                time.sleep(3)
+               
+                 time.sleep(3)
                 UNDER_ATTACK = False
 
 def main():
