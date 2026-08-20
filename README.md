@@ -1,7 +1,5 @@
 # 🛡️ ARP-Shield: Active Firewall Defense
 
-![Banner](https://via.placeholder.com/1200x300.png?text=ARP-Shield+Active+Defense)
-
 🌍 **[Türkçe versiyonu için aşağıya kaydırın / Scroll down for Turkish](#-türkçe-sürüm)**
 
 ARP-Shield is a Python and Scapy-based cybersecurity tool that detects ARP Poisoning attacks on the network and immediately quarantines the attacker.
