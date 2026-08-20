@@ -36,11 +36,8 @@ def mtd_shield_activate():
     subprocess.call(["ifconfig", IFACE, "up"])
     
     print("[*] Eski IP düşürülüyor ve yeni MAC için IP talep ediliyor (DHCP)...")
-    # Önce askıda kalan DHCP kaydını temizle
     subprocess.call(["dhclient", "-r", IFACE])
-    # Ağ yöneticisini yeniden başlatarak yeni MAC ile ağa bağlanmaya zorla
     subprocess.call(["systemctl", "restart", "NetworkManager"])
-    # 3 saniye internetin oturmasını bekle
     time.sleep(3)
     
     print("[+] Başarılı! Saldırganın hedefi boşa düşürüldü ve ağ bağlantısı yenilendi.\n")
